@@ -1,6 +1,27 @@
 ### 문제 1
 
 두 수를 입력받아 큰 수를 반환하는 함수를 작성하세요.
+```js
+function larger(x,y){
+  return Math.max(x,y);
+}
+// 또는
+const larger = (x,y) => Math.max(x,y);
+
+// if문
+function largeIf(x,y){
+  if(x > y){
+    return x;
+  } else {
+    return y;
+  }
+}
+
+// 삼항연산자
+function larger2(x,y){
+  return x > y ? x : y;
+}
+```
 
 ### 문제 2
 
@@ -9,7 +30,18 @@
 에러를 발생시키는 코드는 다음과 같습니다.
 
 ```js
-throw new Error('입력값이 잘못되었습니다.');
+function isPositive(x,y,z){
+  const result = x * y * z;
+  // 만약 곱이 양수이면 true 반환
+  if(result > 0){
+    return true;
+  }else if(result <= 0){
+    // 만약 0 혹은 음수이면 false 반환
+    return false;
+  }else{
+    throw new Error('입력값이 잘못 되었습니다.');
+  }
+}
 ```
 
 ### 문제 3
@@ -26,9 +58,61 @@ limit(3, 7, 11); -> 7
 limit(3, 7, 0); -> 3
 ```
 
+```js
+// if 문
+function limit(min,max,input){
+  if(min > input){
+    return min;
+  }else if(max < input){
+    return max;
+  }else{
+    return input;
+  }
+}
+
+// switch 문
+function limit(min, max, input) {
+ switch(true) {
+   case min>input :
+     console.log(min);
+     break;
+   case max<input :
+     console.log(max);
+     break;
+   default :
+     return input;
+ }
+}
+```
 ### 문제 4
 
 어떤 정수가 짝수인지 홀수인지 출력하는 함수를 작성하세요. 이를 이용해서, 1부터 20까지의 수가 각각 짝수인지 홀수인지 출력하는 프로그램을 작성하세요.
+```js
+function printEvenOrOdd(x){
+  if(x % 2 === 0){
+    console.log(x +'은 짝수');
+  }else{
+    console.log(`${x}은 홀수`);
+  }
+}
+
+let i = 0;
+while(i < 20){
+  printEvenOrOdd(i + 1);
+  i++;
+}
+// 또는 함수안에서 모두 선언
+function rt(){
+  for(let i = 1; i < 21; i++){
+    if(i % 2 === 0){
+      console.log(i + '은 짝수');
+    }else{
+      console.log(`${i}은 홀수`);
+    }  
+  }
+}
+rt();
+```
 
 ### 문제 5
 
