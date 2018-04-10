@@ -102,7 +102,7 @@ while(i < 20){
   i++;
 }
 // 또는 함수안에서 모두 선언
-function rt(){
+function evenOrOdd(){
   for(let i = 1; i < 21; i++){
     if(i % 2 === 0){
       console.log(i + '은 짝수');
@@ -111,16 +111,25 @@ function rt(){
     }  
   }
 }
-rt();
+evenOrOdd();
 ```
 
 ### 문제 5
 
 100 이하의 자연수 중 3과 5의 공배수를 모두 출력하는 프로그램을 작성하세요.
-
+```js
+  for(let i=1; i<=100; i++){
+    if(i % 3 === 0 && i % 5 === 0){
+      console.log(i);
+    }
+}
+```
 ### 문제 6
 
 자연수를 입력받아, 그 수의 모든 약수를 출력하는 함수를 작성하세요.
+```js
+
+```
 
 ### 문제 7
 
@@ -129,6 +138,17 @@ rt();
 ### 문제 8
 
 1부터 100까지의 수를 차례대로 출력하되, 자릿수에 3, 6, 9중 하나라도 포함되어 있으면 '짝!'을 대신 출력하는 프로그램을 작성하세요.
+```js
+for(let i=1; i<=100; i++){
+  const str = i.toString();
+  if(str.includes('3') || str.includes('6') || str.includes('9')){
+    console.log("짝");
+  }else{
+    console.log(i);
+  }
+}
+```
+
 
 ### 문제 9
 
@@ -153,6 +173,26 @@ rt();
 * * *
 * * * *
 * * * * *
+```
+```js
+// 반복문에 repeat을 이용
+function stair(n){
+  for(let i=0; i<n; i++){
+    const str = '* '.repeat(i + 1);
+    console.log(str);
+  }
+}
+
+// 이중 for문을 이용
+function stair(n){
+  for(let i=0; i<n; i++){
+    let str = '';
+    for(let j=0; j<i+1; j++){
+      str += '* ';
+    }
+    console.log(str);
+  }
+}
 ```
 
 ### 문제 10
@@ -185,6 +225,34 @@ rt();
    * *
     *
 ```
+```js
+function diamond(n){
+  for(let i=0; i<n; i++){
+    const str = ' '.repeat(n - i -1) + '* '.repeat(i + 1);
+    console.log(str);
+    
+  }
+  for(let i=n-1; i>=0; i--){
+    const str = ' '.repeat(n - i -1) + '* '.repeat(i + 1);
+    console.log(str);
+  }
+}
+
+// 더 좋은 방법 - 코드 중복 처리
+function line(n, i){
+  const str = ' '.repeat(n - i -1) + '* '.repeat(i + 1);
+  console.log(str);
+}
+
+function diamond(n){
+  for(let i=0; i<n; i++){
+    line(n,i);
+  }
+  for(let i=n-1; i>=0; i--){
+    line(n,i);
+  }
+}
+```
 
 ### 문제 11
 
@@ -193,6 +261,36 @@ rt();
 ### 문제 12
 
 세 수를 입력받아 큰 것부터 차례대로 출력하는 함수를 작성하세요.
+```js
+function sort(x,y,z){
+  let larger = x > y ? x : y;
+  let smaller1 = x > y ? y : x;
+  let max = larger > z ? larger : z;
+  let smaller2 = larger > z ? z : larger;
+  console.log(max);
+  if(smaller1 > smaller2){
+    console.log(smaller1);
+    console.log(smaller2);
+  }else{
+    console.log(smaller2);
+    console.log(smaller1);
+  }
+}
+
+// 또는 
+function compReverse(a,b){
+  return b - a;
+}
+
+const arr = [];
+function sort(x,y,z){
+  arr.push(x,y,z);
+  arr.sort(compReverse);
+  for(let i=0; i<arr.length; i++){
+    console.log(arr[i]);
+  }
+}
+```
 
 ### 문제 13
 

@@ -8,6 +8,20 @@ insensitiveEqual('hello', 'hello'); -> true
 insensitiveEqual('hello', 'Hello'); -> true
 insensitiveEqual('hello', 'world'); -> false
 ```
+```js
+function insensitiveEqual(str1,str2){
+  if(str1.toLowerCase() === str2.toLowerCase()){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+// 또는 
+function insensitiveEqual(str1,str2){
+  return str1.toLowerCase() === str2.toLowerCase();
+}
+```
 
 ### 문제 2
 
@@ -18,10 +32,68 @@ insensitiveEqual('hello', 'world'); -> false
 leftPad('hello', 8); -> '   hello'
 leftPad('hello', 3); -> 'hello'
 ```
-
+```js
+function leftPad(str, num){
+  if(str.length < num){
+    const pad = num - str.length;
+    return ' '.repeat(pad) + str;
+  }else{
+    return str;
+  }
+}
+```
 ### 문제 3
 
 문자열을 입력받아, 문자열 안에 들어있는 모든 모음(a, e, i, o, u)의 갯수를 반환하는 함수를 작성하세요.
+```js
+function countVowel(str){
+  let count = 0;
+  for(let i=0; i<str.length; i++){
+    if(str[i].includes('a')){
+      count++;
+    }else if(str[i].includes('e')){
+      count++;
+    }else if(str[i].includes('i')){
+      count++;
+    }else if(str[i].includes('o')){
+      count++;
+    }else if(str[i].includes('u')){
+      count++;
+    }
+  }
+  return count;
+}
+// 또는 더 간결하게
+function countVowel(str){
+  let count = 0;
+  for(let i=0; i<str.length; i++){
+    if(
+      str[i].includes('a') || 
+      str[i].includes('e') || 
+      str[i].includes('i') || 
+      str[i].includes('o') || 
+      str[i].includes('u')){
+      count++;
+    }
+  }
+  return count;
+}
+// 또는 
+function countVowel(str){
+  let count = 0;
+  for(let i=0; i<str.length; i++){
+    if(
+      str[i] === 'a' || 
+      str[i] === 'e' || 
+      str[i] === 'i' || 
+      str[i] === 'o' || 
+      str[i] === 'u'){
+      count++;
+    }
+  }
+  return count;
+}
+```
 
 ### 문제 4
 
@@ -31,7 +103,21 @@ leftPad('hello', 3); -> 'hello'
 ```
 countChar('tomato'); -> {t: 2, o: 2, m: 1, a: 1}
 ```
-
+```js
+function countStr(str){
+  const obj = {};
+  for (let i=0; i<str.length; i++){
+    const char = str[i];
+    // 만약 속성이 없다면 속성값에 1저장
+    if(obj[char] == undefined){
+      obj[char] = 1;
+    }else{
+      obj[char]++;
+    }
+  }
+  return obj;
+}
+```
 ### 문제 5
 
 문자열을 입력받아 그 문자열이 회문(palindrome)인지 판별하는 함수를 작성하세요. (회문이란, '토마토', 'never odd or even'과 같이 뒤에서부터 읽어도 똑같이 읽히는 문자열을 말합니다.)
