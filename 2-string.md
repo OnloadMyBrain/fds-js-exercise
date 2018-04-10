@@ -115,7 +115,7 @@ function countStr(str){
       obj[char]++;
     }
   }
-  return obj;
+  return obj; 
 }
 ```
 ### 문제 5
