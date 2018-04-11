@@ -70,6 +70,15 @@ function limit(min,max,input){
   }
 }
 
+// 삼항연산자 결과값 반환
+function limit2(min, max, input) {
+  return (
+    input < min ? min :
+    input > max ? max :
+    input
+  );
+}
+
 // switch 문
 function limit(min, max, input) {
  switch(true) {
@@ -88,6 +97,7 @@ function limit(min, max, input) {
 
 어떤 정수가 짝수인지 홀수인지 출력하는 함수를 작성하세요. 이를 이용해서, 1부터 20까지의 수가 각각 짝수인지 홀수인지 출력하는 프로그램을 작성하세요.
 ```js
+// 함수선언
 function printEvenOrOdd(x){
   if(x % 2 === 0){
     console.log(x +'은 짝수');
@@ -95,12 +105,17 @@ function printEvenOrOdd(x){
     console.log(`${x}은 홀수`);
   }
 }
-
+// 반복문 while 문을 이용해서 함수 호출
 let i = 0;
 while(i < 20){
   printEvenOrOdd(i + 1);
   i++;
 }
+// 반복문 for를 이용해서 함수 호출
+for (let i = 1; i <= 20; i++) {
+  printIfEvenOrOdd(i);
+}
+
 // 또는 함수안에서 모두 선언
 function evenOrOdd(){
   for(let i = 1; i < 21; i++){
@@ -128,12 +143,21 @@ evenOrOdd();
 
 자연수를 입력받아, 그 수의 모든 약수를 출력하는 함수를 작성하세요.
 ```js
-
+function printFactors(n) {
+  for (let i = 1; i <= n; i++) {
+    if (n % i === 0) {
+      console.log(i);
+    }
+  }
+}
 ```
 
 ### 문제 7
 
 2 이상의 자연수를 입력받아, 그 수가 소수인지 아닌지를 판별하는 함수를 작성하세요.
+
+```js
+```
 
 ### 문제 8
 
@@ -141,7 +165,9 @@ evenOrOdd();
 ```js
 for(let i=1; i<=100; i++){
   const str = i.toString();
-  if(str.includes('3') || str.includes('6') || str.includes('9')){
+  if (str.includes('3') || 
+      str.includes('6') || 
+      str.includes('9')){
     console.log("짝");
   }else{
     console.log(i);
@@ -176,15 +202,20 @@ for(let i=1; i<=100; i++){
 ```
 ```js
 // 반복문에 repeat을 이용
-function stair(n){
+function stars(n){
   for(let i=0; i<n; i++){
     const str = '* '.repeat(i + 1);
     console.log(str);
   }
 }
-
+// 변수 선언 없이 바로 출력
+function stars(n) {
+  for (let i = 1; i <= n; i++) {
+    console.log('* '.repeat(i));
+  }
+}
 // 이중 for문을 이용
-function stair(n){
+function stars(n){
   for(let i=0; i<n; i++){
     let str = '';
     for(let j=0; j<i+1; j++){
@@ -193,6 +224,7 @@ function stair(n){
     console.log(str);
   }
 }
+
 ```
 
 ### 문제 10
@@ -276,7 +308,6 @@ function sort(x,y,z){
     console.log(smaller1);
   }
 }
-
 // 또는 
 function compReverse(a,b){
   return b - a;

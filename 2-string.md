@@ -121,6 +121,26 @@ function countStr(str){
 ### 문제 5
 
 문자열을 입력받아 그 문자열이 회문(palindrome)인지 판별하는 함수를 작성하세요. (회문이란, '토마토', 'never odd or even'과 같이 뒤에서부터 읽어도 똑같이 읽히는 문자열을 말합니다.)
+```js
+function isPalin(str){
+  for(let i = 0; i < Math.floor(str.length/2); i++){
+    if(str[i] !== str[str.length - i - 1]){
+      return false;
+    }
+  }
+  return true;
+}
+// 또는 
+function isPalin(str){
+  const reverse = str.split('').reverse().join('');
+  if(reverse == str){
+      return true;
+  }else{
+    return false;
+  }
+  console.log(reverse);
+}
+```
 
 ### 문제 6
 
@@ -130,6 +150,17 @@ function countStr(str){
 ```
 subString('햄버거');
 // 결과: ['햄', '햄버', '햄버거', '버', '버거', '거']
+```
+```js
+function subString(str){
+  const arr = [];
+  for(let i=0; i < str.length; i++){
+    for(let j=i+1; j <= str.length+1; j++){
+      arr.push(str.slice(i,j));
+    }
+  }
+  return arr;
+}
 ```
 
 ### 문제 7
@@ -141,6 +172,17 @@ subString('햄버거');
 removeDuplicates('tomato'); -> 'toma'
 removeDuplicates('bartender'); -> 'bartend'
 ```
+```js
+function removeDuplicates(str){
+  let newStr = '';
+  for(let i=0; i<str.length; i++){
+    if(!newStr.includes(str[i])){
+        newStr += str[i];
+    }
+  }
+  return newStr;
+}
+```
 
 ### 문제 8
 
@@ -148,15 +190,69 @@ removeDuplicates('bartender'); -> 'bartend'
 
 - 루프로 먼저 풀어보세요.
 - `split` 메소드를 이용해서 풀어보세요.
+```js
+function address(email){
+  let atPos;
+  for(let i=0; i<email.length; i++){
+    if(email[i] === '@'){
+      atPos = i;
+      break;
+    }
+  }
+  const afterAt = email.slice(0,atPos);
+  const stars = '*'.repeat(atPos);
+  return stars + afterAt;
+}
+//
+function address(email){
+  const atPos = email.indexOf('@');
+  const afterAt = email.slice(0,atPos);
+  const stars = '*'.repeat(atPos);
+  return stars + afterAt;
+}
+//
+function address(email){
+  const arr = email.split('@');
+  const domain = arr[1];
+  const stars = '*'.repeat(arr[0].length);
+  const address = stars + '@' + domain;
+  return address;
+}
+```
 
 ### 문제 9
 
 문자열을 입력받아, 대문자는 소문자로, 소문자는 대문자로 바꾼 결과를 반환하는 함수를 작성하세요.
+```js
+function swapCase(str){
+  let newStr = '';
+  for(let i=0; i<str.length; i++){
+    if(str[i].toLowerCase() === str[i]){
+      newStr += str[i].toUpperCase();
+    }else{
+      newStr += str[i].toLowerCase();
+    }
+  }
+  return newStr;
+}
+```
 
 ### 문제 10
 
 문자열을 입력받아, 각 단어의 첫 글자를 대문자로 바꾼 결과를 반환하는 함수를 작성하세요. (문자열에 개행이 없다고 가정합니다.)
-
+```js
+function capitalize(str){
+  let newStr = '';
+  for(let i=0; i<str.length; i++){
+    if(i === 0 || str[i-1] === ' '){
+      newStr += str[i].toUpperCase();
+    } else {
+      newStr += str[i];
+    }
+  }
+  return newStr;
+}
+```
 ### 문제 11
 
 문자열을 입력받아, 문자열 안에 들어있는 단어 중 가장 긴 단어를 반환하는 함수를 작성하세요. (문자열에 개행이 없다고 가정합니다.)
