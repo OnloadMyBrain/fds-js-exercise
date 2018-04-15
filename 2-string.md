@@ -285,14 +285,58 @@ function maxLength(str){
 ### 문제 12
 
 문자열 `s`과 자연수 `n`을 입력받아, `s`의 첫 `n`개의 문자만으로 이루어진 새 문자열을 반환하는 함수를 작성하세요.
+예:
+```
+firstStr('hello',3); / 'hel'
+```
+```js
+const firstStr = (s,n) => s.slice(0,n);
+
+//
+function firstStr (s,n){
+  newStr = '';
+  for(let i=0; i<n; i++){
+    newStr += s[i];
+  }
+  return newStr;
+}
+```
 
 ### 문제 13
 
 Camel case의 문자열을 입력받아, snake case로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
+```js
+function camelToSnake(str){
+  let newStr = '';
+  for(let i=0; i < str.length; i++){
+    if(str[i] === str[i].toUpperCase() && i!==0){
+      newStr += '_' + str[i].toLowerCase();
+    }else{
+      newStr += str[i];
+    }
+  } 
+  return newStr;
+}
+```
+
 
 ### 문제 14
 
 Snake case의 문자열을 입력받아, camel case로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
+
+```js
+function snakeToCamel(str){
+  let newStr = '';
+  for (let i=0; i <str.length; i++) {
+    if (str[i-1] === '_') {
+      newStr += str[i].toUpperCase();
+    } else {
+      newStr += str[i];
+    }
+  }
+  return newStr.replace(/_/gi, '');
+}
+```
 
 ### 문제 15
 
@@ -304,6 +348,27 @@ split('Hello World'); -> ['Hello World']
 split('Hello World', ' '); -> ['Hello', 'World']
 split('let,const,var', ',') -> ['let', 'const', 'var']
 ```
+```js
+function split(str, sep) {
+  const newArr = [];
+  let newStr = '';
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== sep) {
+      newStr += str[i];
+      console.log(newStr);
+    } else {
+      newArr.push(newStr);
+      newStr = '';
+      console.log(newArr);
+    }
+  }
+  newArr.push(newStr);
+  return newArr;
+}
+
+//
+const toSplit = (str,x) => str.split(x);
+```
 
 ### 문제 16
 
@@ -312,6 +377,21 @@ split('let,const,var', ',') -> ['let', 'const', 'var']
 예:
 ```
 convertBinary('1101'); -> 13
+```
+```js
+//
+const converBinary = (str) => ('0b' + str) * 1;
+
+// 
+function convertBinary(str){
+  const arr = Array.from(str).reverse();
+  let num = 0;
+  
+  for(let i=0; i<arr.length; i++){
+    arr[i] === '0' ? num += 0 : num += 2**i;
+  }
+  return num;
+}
 ```
 
 ### 문제 17

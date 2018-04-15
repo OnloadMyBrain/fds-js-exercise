@@ -90,7 +90,7 @@ function limit(min, max, input) {
      break;
    default :
      return input;
- }
+  }
 }
 ```
 ### 문제 4
@@ -165,9 +165,7 @@ function printFactors(n) {
 ```js
 for(let i=1; i<=100; i++){
   const str = i.toString();
-  if (str.includes('3') || 
-      str.includes('6') || 
-      str.includes('9')){
+  if (str.includes('3') || str.includes('6') || str.includes('9')){
     console.log("짝");
   }else{
     console.log(i);

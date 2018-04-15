@@ -6,18 +6,83 @@
 ```
 range(3, 6); -> [3, 4, 5, 6]
 ```
+```js
+function range(start,end){
+  const arr = [];
+  for(let i =start; i<=end; i++){
+    arr.push(i);
+  }
+  return arr;
+}
+//
+const range = (start,end) => {
+  const arr = [];
+  for(let i =start; i<=end; i++){
+    arr.push(i);
+  }
+  return arr;
+}
+```
 
 ### 문제 2
 
 수 타입의 값으로만 이루어진 배열을 입력받아, 그 값들의 합을 구하는 함수를 작성하세요.
+```js
+function sum(arr){
+  let num = 0;
+  for(let i = 0; i < arr.length; i++){
+    num += arr[i];
+  }
+  return num;
+}
+//
+function sum(arr){
+  let num = 0;
+  arr.forEach(item =>{
+    num += item; // num = num + item;
+  });
+  return num;
+}
+//
+function sum(arr){
+  let num = 0;
+  for (const item of arr){
+    num += item;
+  }
+  return num;
+}
+```
 
 ### 문제 3
 
 배열을 입력받아, falsy인 요소가 제거된 새 배열을 반환하는 함수를 작성하세요.
+```js
+function delFalsy(arr){
+  let newArr = [];
+  for(let i=0; i<arr.length; i++){
+    if(arr[i]){
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
+```
 
 ### 문제 4
 
 배열을 입력받아, 중복된 요소가 제거된 새 배열을 반환하는 함수를 작성하세요.
+```js
+function delOverlap(arr){
+  let newArr = [];
+  for(let i=0; i<arr.length; i++){
+    if(!newArr.includes(arr[i])){
+      newArr.push(arr[i]);
+      console.log(newArr);
+    }
+  }
+  return newArr;
+}
+```
 
 ### 문제 5
 
@@ -54,6 +119,17 @@ coins(263, [100, 50, 10, 5, 1]);
 1
 1
 1
+```
+```js
+function coins(price, coin){
+  let newPrice = price;
+  for(let i=0; i<coin.length; i++){
+    while(newPrice >= coin[i]){
+      newPrice = newPrice - coin[i];
+      console.log(coin[i]);
+    }
+  }
+}
 ```
 
 ### 문제 8
